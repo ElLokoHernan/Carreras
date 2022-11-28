@@ -1,8 +1,8 @@
 import pygame
 import sys
 import random
-
-#constantes 
+#primeros pasos con git
+#constantes  
 ANCHO = 400
 ALTO = 600
 color_rojo = (255,0,0)
