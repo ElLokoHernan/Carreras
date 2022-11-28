@@ -16,6 +16,9 @@ jugador_size = 50
 jugador_pos = [ANCHO/2,ALTO - jugador_size * 2]
 jugador_pos1 = [ANCHO/2,ALTO - jugador_size * 2]
 vida = 100
+pygame.mixer.init()
+#pygame.mixer.Sound.load("music/choque.mp3")
+choque = pygame.mixer.Sound("music/choque.mp3")
 
 #enemigo
 ene = pygame.image.load('car/E.png')
@@ -31,14 +34,17 @@ fondo = pygame.image.load('street/fondo.jpg')
 fondo = pygame.transform.scale(fondo,(ANCHO,ALTO))
 pygame.mixer.init()
 pygame.mixer.music.load('music/WhatsApp Audio 2022-11-13 at 21.53.11.mpeg')
-pygame.mixer.music.play()
+#pygame.mixer.music.play()
 score = 0
+
 
 def detectar_colision(jugador_pos,enemigo_pos):
     jx = jugador_pos[0]
     jy = jugador_pos [1]
     ex = enemigo_pos[0]
     ey = enemigo_pos[1]
+    
+    
 
     if(ex >= jx and ex <(jx + jugador_size)) or(jx >= ex and jx < (ex + enemigo_size)):
         if  (ey >= jy and ey <(jy + jugador_size)) or(jy >= ex and jy < (ey + enemigo_size)):
@@ -97,10 +103,12 @@ while not game_over:
         
     else:
         enemigo_pos[0] = random.randint(0,ANCHO - enemigo_size)
-        enemigo_pos[1] = 0
+        enemigo_pos[1
+        ] = 0
         score += 10
     if detectar_colision(jugador_pos,enemigo_pos):
         vida -= 1
+        choque.play()
         wn.blit(ene,(enemigo_pos[0],enemigo_pos[1],enemigo_size,enemigo_size))
         pygame.display.update()
         print("jajajajajajaj",score,"vidas restantes",vida)
