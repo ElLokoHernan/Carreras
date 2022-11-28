@@ -1,7 +1,7 @@
 import pygame
 import sys
 import random
-#primeros pasos con git
+#primeros pasos con git 
 #constantes  
 ANCHO = 400
 ALTO = 600
