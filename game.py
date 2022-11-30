@@ -1,6 +1,8 @@
 import pygame
 import sys
 import random
+from pyvidplayer import Video
+
 #primeros pasos con git 
 #constantes  
 ANCHO = 400
@@ -33,8 +35,8 @@ clock = pygame.time.Clock()
 fondo = pygame.image.load('street/fondo.jpg')
 fondo = pygame.transform.scale(fondo,(ANCHO,ALTO))
 pygame.mixer.init()
-pygame.mixer.music.load('music/WhatsApp Audio 2022-11-13 at 21.53.11.mpeg')
-#pygame.mixer.music.play()
+pygame.mixer.music.load('music/fondo.mp3')
+pygame.mixer.music.play()
 score = 0
 
 
@@ -91,6 +93,18 @@ while not game_over:
             
             
 
+#vid = Video("video/Intro.mp4")
+#vid.set.size(9200,900)
+
+#def intro():
+    #while True:
+        #vid.draw(wn,(60,0))
+        #pygame.display.update()
+       # for event in pygame.event.get():
+        #    if event.type == pygame.MAUSEBUTTONDOWN:
+         #       vid.close()
+               
+                
 
 
 
@@ -123,23 +137,29 @@ while not game_over:
     #if seflt.rect.right > ANCHO:
      #   self.rect.right = ANCHO
     #enemigo
-    wn.blit(ene,(enemigo_pos[0],enemigo_pos[1],enemigo_size,enemigo_size))
+    def menu():
+        wn.blit(ene,(enemigo_pos[0],enemigo_pos[1],enemigo_size,enemigo_size))
+        wn.blit(car, (jugador_pos[0],jugador_pos[1],jugador_size,jugador_size))
+        texto(wn,str("vida"),50, 40 ,5 ) 
+        texto(wn,str(vida),50, 40 ,40 )  
+        texto(wn,str("puntos"),50, 160 ,5 )   
+        texto(wn,str(score),50,160, 40)    
+        clock.tick(30)
+        pygame.display.update()
+
+            
    # pygame.draw.rect(wn,color_azul,(enemigo_pos[0],
     #                                enemigo_pos[1],
      #                               enemigo_size,
       #                              enemigo_size))
     #jugador
-    wn.blit(car, (jugador_pos[0],jugador_pos[1],jugador_size,jugador_size))
+    
     #pygame.draw.rect(wn,color_rojo,(jugador_pos[0],
      #                               jugador_pos[1],
       #                              jugador_size,
        #                             jugador_size))
     #marcador
     #limites(0,400,500)
-    texto(wn,str("vida"),50, 40 ,5 ) 
-    texto(wn,str(vida),50, 40 ,40 )  
-    texto(wn,str("puntos"),50, 160 ,5 )   
-    texto(wn,str(score),50,160, 40)    
-    clock.tick(30)
-    pygame.display.update()
+    menu()
+
 #steitmens
